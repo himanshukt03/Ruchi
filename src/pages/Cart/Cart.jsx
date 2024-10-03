@@ -18,7 +18,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="cart">
+    <div className="cart-container">
       <div className="cart-items">
         <div className="cart-items-title cart-heading">
           <p>Items</p>
@@ -63,47 +63,29 @@ const Cart = () => {
           })
         )}
       </div>
-      <div className="cart-bottom">
-        <div className="cart-total">
-          <h2>Cart Total</h2>
-          <div>
-            <div className="cart-total-details">
-              <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <p>Delivery Free</p>
-              <p>${getTotalCartAmount() === 0 ? 0 : deliveryFee}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <b>Total</b>
-              <b>
-                $
-                {getTotalCartAmount() === 0
-                  ? 0
-                  : getTotalCartAmount() + deliveryFee}
-              </b>
-            </div>
-          </div>
-          <button
-            disabled={getTotalCartAmount() === 0}
-            onClick={() => navigate("/order")}
-          >
-            PROCEED TO CHECKOUT
-          </button>
-        </div>
-        <div className="cart-promocode">
-          <div>
-            <p>If you have a promocode, Enter it here</p>
-            <div className="cart-promocode-input">
-              <input type="text" placeholder="Promo Code" />
-              <button>Submit</button>
-            </div>
-          </div>
-        </div>
+      <div className="cart-total">
+      <h2>Cart Total</h2>
+        <div className="cart-total-details">
+        <p>Subtotal</p>
+        <p>${getTotalCartAmount()}</p>
       </div>
+  <hr />
+  <div className="cart-total-details">
+    <p>Delivery Fee</p>
+    <p>${getTotalCartAmount() === 0 ? 0 : deliveryFee}</p>
+  </div>
+  <hr />
+  <div className="cart-total-details">
+    <p>Total</p>
+    <p>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + deliveryFee}</p>
+  </div>
+  <button
+    disabled={getTotalCartAmount() === 0}
+    onClick={() => navigate("/order")}
+  >
+    PROCEED TO CHECKOUT
+  </button>
+</div>
     </div>
   );
 };
